@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class WithTabBar extends StatefulWidget {
-  const WithTabBar({Key? key}) : super(key: key);
+  const WithTabBar({super.key});
 
   @override
-  _WithTabBarState createState() => _WithTabBarState();
+  WithTabBarState createState() => WithTabBarState();
 }
 
-class _WithTabBarState extends State<WithTabBar> {
+class WithTabBarState extends State<WithTabBar> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
@@ -43,8 +42,8 @@ class _WithTabBarState extends State<WithTabBar> {
         elevation: 0,
       ),
       body: IndexedStack(
-        children: _pages,
         index: _selectedIndex,
+        children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -69,7 +68,7 @@ class _WithTabBarState extends State<WithTabBar> {
 }
 
 class CallsPage extends StatelessWidget {
-  const CallsPage();
+  const CallsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +76,7 @@ class CallsPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          flexibleSpace: Column(
+          flexibleSpace: const Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TabBar(
@@ -96,7 +95,7 @@ class CallsPage extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             IncomingPage(),
             OutgoingPage(),
@@ -109,11 +108,13 @@ class CallsPage extends StatelessWidget {
 }
 
 class IncomingPage extends StatefulWidget {
+  const IncomingPage({super.key});
+
   @override
-  _IncomingPageState createState() => _IncomingPageState();
+  IncomingPageState createState() => IncomingPageState();
 }
 
-class _IncomingPageState extends State<IncomingPage>
+class IncomingPageState extends State<IncomingPage>
     with AutomaticKeepAliveClientMixin<IncomingPage> {
   int count = 10;
 
@@ -125,7 +126,8 @@ class _IncomingPageState extends State<IncomingPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    super.build(context);
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -148,16 +150,19 @@ class _IncomingPageState extends State<IncomingPage>
 }
 
 class OutgoingPage extends StatefulWidget {
+  const OutgoingPage({super.key});
+
   @override
-  _OutgoingPageState createState() => _OutgoingPageState();
+  OutgoingPageState createState() => OutgoingPageState();
 }
 
-class _OutgoingPageState extends State<OutgoingPage>
+class OutgoingPageState extends State<OutgoingPage>
     with AutomaticKeepAliveClientMixin<OutgoingPage> {
   final items = List<String>.generate(10000, (i) => "Call $i");
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Center(
         //child: Icon(Icons.call_made_outlined, size: 350),
@@ -165,7 +170,7 @@ class _OutgoingPageState extends State<OutgoingPage>
           itemCount: items.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text('${items[index]}'),
+              title: Text(items[index]),
             );
           },
         ),
@@ -178,8 +183,10 @@ class _OutgoingPageState extends State<OutgoingPage>
 }
 
 class MissedPage extends StatelessWidget {
+  const MissedPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Icon(Icons.call_missed_outgoing, size: 350);
+    return const Icon(Icons.call_missed_outgoing, size: 350);
   }
 }

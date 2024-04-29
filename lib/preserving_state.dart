@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class PreservingBottomNavState extends StatefulWidget {
-  const PreservingBottomNavState({Key? key}) : super(key: key);
+  const PreservingBottomNavState({super.key});
 
   @override
-  _PreservingBottomNavStateState createState() =>
-      _PreservingBottomNavStateState();
+  PreservingBottomNavStateState createState() =>
+      PreservingBottomNavStateState();
 }
 
-class _PreservingBottomNavStateState extends State<PreservingBottomNavState> {
+class PreservingBottomNavStateState extends State<PreservingBottomNavState> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[

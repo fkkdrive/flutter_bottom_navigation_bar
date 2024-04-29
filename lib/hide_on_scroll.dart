@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class HideOnScroll extends StatefulWidget {
-  const HideOnScroll({Key? key}) : super(key: key);
+  const HideOnScroll({super.key});
 
   @override
-  _HideOnScrollState createState() => _HideOnScrollState();
+  HideOnScrollState createState() => HideOnScrollState();
 }
 
-class _HideOnScrollState extends State<HideOnScroll>
+class HideOnScrollState extends State<HideOnScroll>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
   late AnimationController animationController;
@@ -23,8 +23,8 @@ class _HideOnScrollState extends State<HideOnScroll>
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
 
     _pages = <Widget>[
       CallsPage(
@@ -34,13 +34,13 @@ class _HideOnScrollState extends State<HideOnScroll>
               : animationController.reverse();
         },
       ),
-      Center(
+      const Center(
         child: Icon(
           Icons.camera,
           size: 150,
         ),
       ),
-      Padding(
+      const Padding(
         padding: EdgeInsets.all(16.0),
         child: TextField(
           decoration: InputDecoration(
@@ -66,8 +66,8 @@ class _HideOnScrollState extends State<HideOnScroll>
         elevation: 0,
       ),
       body: IndexedStack(
-        children: _pages,
         index: _selectedIndex,
+        children: _pages,
       ),
       bottomNavigationBar: SizeTransition(
         sizeFactor: animationController,
@@ -96,7 +96,7 @@ class _HideOnScrollState extends State<HideOnScroll>
 }
 
 class CallsPage extends StatelessWidget {
-  CallsPage({required this.isHideBottomNavBar});
+  const CallsPage({super.key, required this.isHideBottomNavBar});
   final Function(bool) isHideBottomNavBar;
 
   @override
@@ -105,7 +105,7 @@ class CallsPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          flexibleSpace: Column(
+          flexibleSpace: const Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TabBar(
@@ -126,13 +126,13 @@ class CallsPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            IncomingPage(),
+            const IncomingPage(),
             OutgoingPage(
               isHideBottomNavBar: (value) {
                 isHideBottomNavBar(value);
               },
             ),
-            Icon(Icons.call_missed_outgoing, size: 350),
+            const Icon(Icons.call_missed_outgoing, size: 350),
           ],
         ),
       ),
@@ -141,11 +141,13 @@ class CallsPage extends StatelessWidget {
 }
 
 class IncomingPage extends StatefulWidget {
+  const IncomingPage({super.key});
+
   @override
-  _IncomingPageState createState() => _IncomingPageState();
+  IncomingPageState createState() => IncomingPageState();
 }
 
-class _IncomingPageState extends State<IncomingPage>
+class IncomingPageState extends State<IncomingPage>
     with AutomaticKeepAliveClientMixin<IncomingPage> {
   int count = 10;
 
@@ -157,20 +159,21 @@ class _IncomingPageState extends State<IncomingPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.call_received, size: 350),
+              const Icon(Icons.call_received, size: 350),
               Text('Total incoming calls: $count',
-                  style: TextStyle(fontSize: 30)),
+                  style: const TextStyle(fontSize: 30)),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: clear,
-          child: Icon(Icons.clear_all),
+          child: const Icon(Icons.clear_all),
         ));
   }
 
@@ -181,13 +184,13 @@ class _IncomingPageState extends State<IncomingPage>
 class OutgoingPage extends StatefulWidget {
   final Function(bool) isHideBottomNavBar;
 
-  OutgoingPage({required this.isHideBottomNavBar});
+  const OutgoingPage({super.key, required this.isHideBottomNavBar});
 
   @override
-  _OutgoingPageState createState() => _OutgoingPageState();
+  OutgoingPageState createState() => OutgoingPageState();
 }
 
-class _OutgoingPageState extends State<OutgoingPage>
+class OutgoingPageState extends State<OutgoingPage>
     with AutomaticKeepAliveClientMixin<OutgoingPage> {
   final items = List<String>.generate(10000, (i) => "Call $i");
 
@@ -212,6 +215,7 @@ class _OutgoingPageState extends State<OutgoingPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return NotificationListener<ScrollNotification>(
       onNotification: _handleScrollNotification,
       child: Scaffold(
@@ -220,7 +224,7 @@ class _OutgoingPageState extends State<OutgoingPage>
             itemCount: items.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text('${items[index]}'),
+                title: Text(items[index]),
               );
             },
           ),

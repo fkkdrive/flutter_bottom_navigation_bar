@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class BasicBottomNavBar extends StatefulWidget {
-  const BasicBottomNavBar({Key? key}) : super(key: key);
+  const BasicBottomNavBar({super.key});
 
   @override
-  _BasicBottomNavBarState createState() => _BasicBottomNavBarState();
+  BasicBottomNavBarState createState() => BasicBottomNavBarState();
 }
 
-class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
+class BasicBottomNavBarState extends State<BasicBottomNavBar> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
@@ -23,10 +23,10 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
       Icons.chat,
       size: 150,
     ),
-    // Icon(
-    //   Icons.chat,
-    //   size: 150,
-    // ),
+    Icon(
+      Icons.chat,
+      size: 150,
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -45,6 +45,7 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.call),
@@ -58,10 +59,10 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar> {
             icon: Icon(Icons.chat),
             label: 'Chats',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.chat),
-          //   label: 'Chats',
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chats',
+          ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

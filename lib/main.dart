@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-
-import 'basic_bottom_nav_bar.dart';
+import 'package:flutter_bottom_navigation_bar/with_tabbar.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +16,8 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
       ),
       debugShowCheckedModeBanner: false,
-      home: BasicBottomNavBar(),
+      home: const WithTabBar(),
+      // BasicBottomNavBar(),
     );
   }
 }

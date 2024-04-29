@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class WithFabButton extends StatefulWidget {
-  const WithFabButton({Key? key}) : super(key: key);
+  const WithFabButton({super.key});
 
   @override
-  _WithFabButtonState createState() => _WithFabButtonState();
+  WithFabButtonState createState() => WithFabButtonState();
 }
 
-class _WithFabButtonState extends State<WithFabButton> {
+class WithFabButtonState extends State<WithFabButton> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
@@ -38,7 +38,7 @@ class _WithFabButtonState extends State<WithFabButton> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.chat),
+        child: const Icon(Icons.chat),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
