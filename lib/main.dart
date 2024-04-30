@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bottom_navigation_bar/with_tabbar.dart';
+import 'package:flutter_bottom_navigation_bar/preserving_state.dart';
+import 'package:flutter_bottom_navigation_bar/tabbar_demo.dart';
+import 'package:flutter_bottom_navigation_bar/with_fab.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       debugShowCheckedModeBanner: false,
-      home: const WithTabBar(),
+      home: const PreservingBottomNavState(),
+      // WithFabButton(),
+      // TabDemo(),
+      // WithTabBar(),
       // BasicBottomNavBar(),
     );
   }
