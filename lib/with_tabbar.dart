@@ -158,7 +158,7 @@ class OutgoingPage extends StatefulWidget {
 
 class OutgoingPageState extends State<OutgoingPage>
     with AutomaticKeepAliveClientMixin<OutgoingPage> {
-  final items = List<String>.generate(10000, (i) => "Call $i");
+  final items = List<String>.generate(20, (i) => "Call $i");
 
   @override
   Widget build(BuildContext context) {
